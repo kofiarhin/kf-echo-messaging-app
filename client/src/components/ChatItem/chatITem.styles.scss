@@ -1,0 +1,12 @@
+.chat-item {
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+  transition: all ease-in-out 300ms;
+  padding: 0.5rem;
+  p {
+    margin-bottom: 0.4rem;
+  }
+  &:hover {
+    background-color: rgb(86, 85, 85);
+  }
+}

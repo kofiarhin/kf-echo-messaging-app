@@ -1,0 +1,14 @@
+.contacts-wrapper {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  width: 1200px;
+  max-width: 90%;
+  margin: 0 auto;
+  > div button {
+    background-color: orange;
+    padding: 0.5rem 1rem;
+    margin-top: 0.5rem;
+    cursor: pointer;
+  }
+}
