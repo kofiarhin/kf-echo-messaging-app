@@ -12,7 +12,7 @@ const { sendMessage } = require("./services/helper");
 const PORT = process.env.PORT || 5000;
 const CORS_OPTIONS = {
   origin: "https://kf-echo-messaging-app.onrender.com",
-  methods: ["GET", "POST", "PUT"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
 };
 
 // Connect to the database

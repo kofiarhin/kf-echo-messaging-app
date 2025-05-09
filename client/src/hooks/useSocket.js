@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-const socket = io.connect("http://localhost:5000");
+const socket = io.connect("http://https://kf-echo-messaging-app.onrender.com");
 const useSocket = () => {
   return { socket };
 };
