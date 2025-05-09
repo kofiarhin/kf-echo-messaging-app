@@ -27,8 +27,10 @@ app.use("/api/contacts", contactsRoutes);
 app.use("/api/users", userRoutes);
 app.use("/api/messages", messagesRoutes);
 app.use("/api/conversations", conversationRoutes);
+
+// setup for deployment
 if (process.env.NODE_ENV === "production") {
-  app.get("/", (req, res) => {
+  app.get("*", (req, res) => {
     const filePath = path.join(__dirname, ".", "dist", "index.html");
     return res.sendFile(filePath);
   });
