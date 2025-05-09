@@ -1,26 +1,33 @@
-const app = require("./app");
-const { Server } = require("socket.io");
+// Import dependencies
 const http = require("http");
+const { Server } = require("socket.io");
+const app = require("./app");
 const connectDB = require("./config/db");
-const server = http.createServer(app);
-const { sendMessage } = require("./services/helper");
 const setupIo = require("./setupio");
 
-// connect to database
+// Import services
+const { sendMessage } = require("./services/helper");
+
+// Configuration
+const PORT = process.env.PORT || 5000;
+const CORS_OPTIONS = {
+  origin: "http://localhost:4000",
+  methods: ["GET", "POST", "PUT"],
+};
+
+// Connect to the database
 connectDB();
 
-// setup socket io and run setup function
-const io = new Server(server, {
-  cors: {
-    origin: "http://localhost:4000",
-    methods: ["GET", "POST", "PUT"],
-  },
-});
+// Create HTTP server
+const server = http.createServer(app);
 
+// Initialize Socket.IO with CORS options
+const io = new Server(server, { cors: CORS_OPTIONS });
+
+// Setup Socket.IO event handlers
 setupIo(io);
 
-const port = process.env.PORT || 5000;
-
-server.listen(port, () => {
-  console.log("server started");
+// Start the server
+server.listen(PORT, () => {
+  console.log(`Server started on port ${PORT}`);
 });
